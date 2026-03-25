@@ -6,17 +6,18 @@ class Solution {
         for(int i = 0; i < numCourses; i++) {
             adj.add(new ArrayList<>());
         }
-         int[] indegree = new int[numCourses];
+        int[] indegree = new int[numCourses];
         for(int[] edge : prerequisites) {
-            adj.get(edge[1]).add(edge[0]);
-        } for(int i = 0; i < numCourses; i++) {
+         adj.get(edge[1]).add(edge[0]);
+        }  for(int i = 0; i < numCourses; i++) {
             for(int n : adj.get(i)) {
                 indegree[n]++;
             }
         }
         Queue<Integer> q = new LinkedList<>();
         for(int i = 0; i < numCourses; i++) {
-            if(indegree[i] == 0) {
+            if(indegree[i] == 0)
+            {
                 q.add(i);
             }
         }
@@ -25,7 +26,7 @@ class Solution {
         while(!q.isEmpty()) {
             int node = q.poll();
             result[index++] = node;
-            for(int neighbor : adj.get(node)) {
+            for(int neighbor:adj.get(node)) {
                 indegree[neighbor]--;
                 if(indegree[neighbor]== 0) 
                 {
